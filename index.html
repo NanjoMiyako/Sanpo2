@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>sanpo2</title>
+<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<h3>交差点タイプ(緑：歩いてきた方向)</h3><br>
+<img id="a2" border="none" src="https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt/A2.jpg" onclick="changeBorder(2)">
+<img id="a3" border="none" src="https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt/A3.jpg" onclick="changeBorder(3)">
+<img id="a4" border="none" src="https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt/A4.jpg" onclick="changeBorder(4)">
+<img id="a5" border="none" src="https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt/A5.jpg" onclick="changeBorder(5)">
+<img id="a6" border="none" src="https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt/A6.jpg" onclick="changeBorder(6)">
+<img id="a7" border="none" src="https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt/A7.jpg" onclick="changeBorder(7)">
+<br>
+<hr>
+<button onclick="DisideNextDirection()"><font size="5">ランダムに移動先を決定</font></button><br><br>
+<button onclick="ClearNextDirection()"><font size="5">次経路クリア</font></button>
+<hr>
+<h3>次の経路を選択しましょう</h3>
+<br>
+<img id="bRoot">
+
+
+
+<script type="text/javascript">
+//初期値設定
+var crossPtType=2
+changeBorder(2);
+
+var NextDirection=1
+
+function changeBorder(id1){
+	crossPtType=Number(id1)
+	clearBorder()
+	id2 = "a"+id1
+	img = document.getElementById(id2)
+	img.style.border="solid"
+	img.style.borderWidth = "thick";
+	
+	
+}
+function ClearNextDirection(){
+	img1 = document.getElementById("bRoot");
+	img1.hidden = true
+}
+function DisideNextDirection(){
+var baseURL = "https://raw.githubusercontent.com/NanjoMiyako/Sanpo2/main/crossPt"
+
+var min = 1 ;
+var max = crossPtType;
+
+var r1= Math.floor( Math.random() * (max + 1 - min) ) + min ;
+
+var str1 = baseURL +"/"+ "B" + crossPtType + "-" + r1 + ".jpg"
+
+	img1 = document.getElementById("bRoot");
+	img1.src = str1
+	img1.hidden = false
+
+}
+function clearBorder(){
+	img = document.getElementById("a2")
+	img.style.border="none"
+	img = document.getElementById("a3")
+	img.style.border="none"
+	img = document.getElementById("a4")
+	img.style.border="none"
+	img = document.getElementById("a5")
+	img.style.border="none"
+	img = document.getElementById("a6")
+	img.style.border="none"
+	img = document.getElementById("a7")
+	img.style.border="none"
+}
+</script>
+
+</body>
+</html>
